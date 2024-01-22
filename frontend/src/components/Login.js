@@ -4,6 +4,8 @@ import { useNavigate, Link } from "react-router-dom"
 
 const Login = () => {
 
+    const history = useNavigate();
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -12,16 +14,31 @@ const Login = () => {
 
         try {
 
-            await axios
+            await axios.post("http://localhost:3001/"), {
+                email, password
+            }
+            .then(res => {
+                if(res.data="exist") {
+                    history("/home", {state:{id:email}})
+                }
+                else if(res.data="notexist") {
+                    alert("User is not logged in")
+                }
+            })
+            .catch(() => {
+                alert("Wrng details")
+                console.log(e);
+            })
 
+        }catch(e){
+            console.log(e);
         }
-
 
 
     }
 
   return (
-    <div className='login'>
+    <div className='Login'>
 
         <h1>Login</h1>
 
