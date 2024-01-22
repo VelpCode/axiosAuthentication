@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 
 
-const app = () => {
+const App = () => {
   return (
     <div>
         <Router>
@@ -21,4 +21,4 @@ const app = () => {
   )
 }
 
-export default app
+export default App
